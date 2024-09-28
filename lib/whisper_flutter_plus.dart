@@ -13,19 +13,16 @@ import 'package:whisper_flutter_plus/models/requests/version_request.dart';
 import 'package:whisper_flutter_plus/models/responses/whisper_transcribe_response.dart';
 import 'package:whisper_flutter_plus/models/responses/whisper_version_response.dart';
 import 'package:whisper_flutter_plus/models/whisper_dto.dart';
-import 'package:whisper_flutter_plus/whisper_audio_convert.dart';
 
 export 'download_model.dart' show WhisperModel;
 export 'models/_models.dart';
-export 'whisper_audio_convert.dart';
 
 /// Native request type
 typedef WReqNative = Pointer<Utf8> Function(Pointer<Utf8> body);
 
 /// Logger use for whole package
-final DartLogger logger = DartLogger(
-  configuration: const DartLoggerConfiguration(
-    format: LogFormat.inline,
+const logger = DartLogger(
+  configuration: DartLoggerConfiguration(
     name: 'whisper_flutter_plus',
   ),
 );
@@ -107,18 +104,9 @@ class Whisper {
   Future<WhisperTranscribeResponse> transcribe({
     required TranscribeRequest transcribeRequest,
   }) async {
-    final WhisperAudioconvert converter = WhisperAudioconvert(
-      audioInput: File(transcribeRequest.audio),
-      audioOutput: File('${transcribeRequest.audio}.wav'),
-    );
-
-    final File? convertedFile = await converter.convert();
-
-    final TranscribeRequest req = transcribeRequest.copyWith(
-      audio: convertedFile?.path ?? transcribeRequest.audio,
-    );
-    final String modelDir = await _getModelDir();
-    final Map<String, dynamic> result = await _request(
+    final req = transcribeRequest.copyWith(audio: transcribeRequest.audio);
+    final modelDir = await _getModelDir();
+    final result = await _request(
       whisperRequest: TranscribeRequestDto.fromTranscribeRequest(
         req,
         model.getPath(modelDir),

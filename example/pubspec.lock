@@ -13,10 +13,10 @@ packages:
     dependency: transitive
     description:
       name: collection
-      sha256: f092b211a4319e98e5ff58223576de6c2803db36221657b46c82574721240687
+      sha256: ee67cb0715911d28db6bf4af1026078bd6f0128b07a5f66fb2ed94ec6783c09a
       url: "https://pub.dev"
     source: hosted
-    version: "1.17.2"
+    version: "1.18.0"
   easy_dart_logger:
     dependency: transitive
     description:
@@ -33,30 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  ffmpeg_dart:
-    dependency: transitive
-    description:
-      name: ffmpeg_dart
-      sha256: b5393b125738c25b97542316dc116d271c667984f3ab62de947fde5cfbebb324
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.0"
-  ffmpeg_kit_flutter_full_gpl:
-    dependency: transitive
-    description:
-      name: ffmpeg_kit_flutter_full_gpl
-      sha256: ab4c65439a1df22c944672c8bf249efb72b86a7feb4ab4c1fd252ca87adf6d8c
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.2"
-  ffmpeg_kit_flutter_platform_interface:
-    dependency: transitive
-    description:
-      name: ffmpeg_kit_flutter_platform_interface
-      sha256: addf046ae44e190ad0101b2fde2ad909a3cd08a2a109f6106d2f7048b7abedee
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -95,18 +71,18 @@ packages:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: "9528f2f296073ff54cb9fee677df673ace1218163c3bc7628093e7eed5203d41"
+      sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.11.1"
   meta:
     dependency: transitive
     description:
       name: meta
-      sha256: "3c74dbf8763d36539f114c799d8a2d87343b5067e9d796ca22b5eb8437090ee3"
+      sha256: bdb68674043280c3428e9ec998512fb681678676b3c54e773629ffe74419f8c7
       url: "https://pub.dev"
     source: hosted
-    version: "1.9.1"
+    version: "1.15.0"
   path:
     dependency: transitive
     description:
@@ -288,14 +264,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
-  web:
-    dependency: transitive
-    description:
-      name: web
-      sha256: dc8ccd225a2005c1be616fe02951e2e342092edf968cf0844220383757ef8f10
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.4-beta"
   whisper_flutter_plus:
     dependency: "direct main"
     description:
@@ -320,5 +288,5 @@ packages:
     source: hosted
     version: "1.0.3"
 sdks:
-  dart: ">=3.1.0 <4.0.0"
+  dart: ">=3.3.0-0 <4.0.0"
   flutter: ">=3.7.0"
