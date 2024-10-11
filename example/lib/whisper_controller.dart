@@ -9,13 +9,9 @@ class WhisperController extends StateNotifier<AsyncValue<TranscribeResult?>> {
   final Ref ref;
 
   Future<void> transcribe(String filePath) async {
-    final WhisperModel model = ref.read(modelProvider);
-
     state = const AsyncLoading();
 
-    final Whisper whisper = Whisper(
-      model: model,
-    );
+    final Whisper whisper = Whisper();
 
     final String? whisperVersion = await whisper.getVersion();
     print(whisperVersion);

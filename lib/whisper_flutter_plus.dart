@@ -14,7 +14,7 @@ import 'package:whisper_flutter_plus/models/responses/whisper_transcribe_respons
 import 'package:whisper_flutter_plus/models/responses/whisper_version_response.dart';
 import 'package:whisper_flutter_plus/models/whisper_dto.dart';
 
-export 'download_model.dart' show WhisperModel;
+export 'download_model.dart';
 export 'models/_models.dart';
 
 /// Native request type
@@ -29,19 +29,8 @@ const logger = DartLogger(
 
 /// Entry point of whisper_flutter_plus
 class Whisper {
-  /// [model] is required
-  /// [modelDir] is path where downloaded model will be stored.
-  /// Default to library directory
-  const Whisper({
-    required this.model,
-    this.modelDir,
-  });
-
   /// model used for transcription
-  final WhisperModel model;
-
-  /// override of model storage path
-  final String? modelDir;
+  static const model = WhisperModel.baseEn;
 
   DynamicLibrary _openLib() {
     if (Platform.isIOS) {
@@ -52,13 +41,23 @@ class Whisper {
   }
 
   Future<String> _getModelDir() async {
-    if (modelDir != null) {
-      return modelDir!;
-    }
     final Directory libraryDirectory = Platform.isAndroid
         ? await getApplicationSupportDirectory()
         : await getLibraryDirectory();
     return libraryDirectory.path;
+  }
+
+  /// Checks if the model is downloaded
+  Future<bool> checkIfModelIsDownloaded() async {
+    final String modelDir = await _getModelDir();
+    final File modelFile = File(model.getPath(modelDir));
+    return modelFile.existsSync();
+  }
+
+  /// Downloads the model
+  Future<void> downloadWhisperModel() async {
+    final String modelDir = await _getModelDir();
+    await downloadModel(model: model, destinationPath: modelDir);
   }
 
   Future<void> _initModel() async {
